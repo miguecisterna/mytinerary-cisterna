@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './Card'
+import Arrow from './Arrow'
 
 let data = [
   {id: 'america1', city: "Cancun", photo: "/img/america/cancun.jpg"},
@@ -20,17 +21,25 @@ let data = [
   {id: 'oceania4' , city: "Wellington", photo: "/img/oceania/wellington.jpg"}
 ]
 
+
+
 export default function Carousel() {
   return (
-    <div className="carousel flex">
-      <div className="container">
+    <div className="carousel flex justify-center items-center">
+
+      <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5"/>
+
+      <div className="container flex flex-wrap gap-2 justify-center h-full">
         
-        <Card city={data[0].city}/>
-        <Card city={data[1].city}/>
-        <Card city={data[2].city}/>
-        <Card city={data[3].city}/>
+        {data.slice(0,4).map((each, index) => <Card key={index} src={each.photo} city={each.city}/>)}
+        
+        
+
         
       </div>
+
+      <Arrow direction="M8.25 4.5l7.5 7.5-7.5 7.5"/>
+
     </div>
   )
 }
