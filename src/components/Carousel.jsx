@@ -1,45 +1,49 @@
+import { useState } from "react";
 import React from 'react'
 import Card from './Card'
 import Arrow from './Arrow'
 
-let data = [
-  {id: 'america1', city: "Cancun", photo: "/img/america/cancun.jpg"},
-  {id: 'america2', city: "New York", photo: "/img/america/newyork.jpg"},
-  {id: 'america3', city: "Rio de Janeiro", photo: "/img/america/rioDeJaneiro.jpg"},
-  {id: 'america4', city: "Ushuaia", photo: "/img/america/ushuaia.jpg"},
-  {id: 'asia1' , city: "Bangkok", photo: "/img/asia/bangkok.jpg"},
-  {id: 'asia2' , city: "Pekin", photo: "/img/asia/pekin.jpg"},
-  {id: 'asia3' , city: "Singapur", photo: "/img/asia/singapur.jpg"},
-  {id: 'asia4' , city: "Tokyo", photo: "/img/asia/tokio.jpg"},
-  {id: 'europe1' , city: "Ibiza", photo: "/img/europe/ibiza.jpg"},
-  {id: 'europe2' , city: "London", photo: "/img/europe/london.jpg"},
-  {id: 'europe3' , city: "Paris", photo: "/img/europe/paris.jpg"},
-  {id: 'europe4' , city: "Roma", photo: "/img/europe/roma.jpg"},
-  {id: 'oceania1' , city: "Majuro", photo: "/img/oceania/majuro.jpg"},
-  {id: 'oceania2' , city: "Sidney", photo: "/img/oceania/sidney.jpg"},
-  {id: 'oceania3' , city: "Suva", photo: "/img/oceania/suva.jpg"},
-  {id: 'oceania4' , city: "Wellington", photo: "/img/oceania/wellington.jpg"}
-]
+export default function Carousel({ data }) {
 
+  let [count,setCount] = useState(0);
+  let [countTo, setCountTo] = useState(4);
 
+  function next_slide(){
+    if(data.length <= countTo){
+      setCount(0);
+      setCountTo(4);
+    }else{
+    setCount(count + 4);
+    setCountTo(countTo+4);
+    }
+    
+    console.log("✨✨Carousello🎈🎈");
+    console.log(count);
+    console.log(countTo);
 
-export default function Carousel() {
+  }
+
+  function prev_slide(){
+    if(count <= 0){
+      setCount(data.length - 4);
+      setCountTo(data.length);
+    }else{
+    setCount(count - 4);
+    setCountTo(countTo - 4);
+    }
+    
+    console.log("✨✨Carousello🎈🎈");
+    console.log(count);
+    console.log(countTo);
+  }
+
   return (
-    <div className="carousel flex justify-center items-center">
-
-      <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5"/>
-
+    <div className="carousel flex justify-center items-center h-80 py-10 px-10 lg:px-0">
+      <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" onClick={prev_slide}/>
       <div className="container flex flex-wrap gap-2 justify-center h-full">
-        
-        {data.slice(0,4).map((each, index) => <Card key={index} src={each.photo} city={each.city}/>)}
-        
-        
-
-        
+        {data.slice(count, countTo).map((each, index) => <Card key={index} src={each.photo} city={each.city}/>)}
       </div>
-
-      <Arrow direction="M8.25 4.5l7.5 7.5-7.5 7.5"/>
-
+      <Arrow direction="M8.25 4.5l7.5 7.5-7.5 7.5" onClick={next_slide}/>
     </div>
   )
 }
