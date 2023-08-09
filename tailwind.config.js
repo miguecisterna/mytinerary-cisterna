@@ -6,7 +6,12 @@ export const content = [
 ];
 export const theme = {
   
-  extend: {}
+  extend: {
+    fontFamily:{
+      'homemadeApple':['Homemade Apple', 'cursive'],
+      'preahvihear':['Preahvihear', 'sans-serif']
+    }
+  }
 };
 export const variants = {};
 export const plugins = [];

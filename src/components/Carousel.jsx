@@ -38,12 +38,16 @@ export default function Carousel({ data }) {
   }
 
   return (
-    <div className="carousel flex justify-center items-center h-80 py-10 px-10 lg:px-0">
+    <div className="flex flex-col items-center justify-end pt-10">
+      <h2 className="font-homemadeApple underline text-lg text-gray-700">Popular Mytineraries!</h2>
+      <div className="carousel flex justify-center items-center h-80 pb-10 px-10 lg:px-0">
       <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" onClick={prev_slide}/>
       <div className="container flex flex-wrap gap-2 justify-center h-full">
         {data.slice(count, countTo).map((each, index) => <Card key={index} src={each.photo} city={each.city}/>)}
       </div>
       <Arrow direction="M8.25 4.5l7.5 7.5-7.5 7.5" onClick={next_slide}/>
     </div>
+    </div>
+    
   )
 }
