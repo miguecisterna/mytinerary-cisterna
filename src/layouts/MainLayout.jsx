@@ -23,7 +23,7 @@ export default function MainLayout() {
         <Slogan />
         <main className="flex flex-col y-10 gap-10 justify-between
         sm:my-10 sm:flex-col items-center
-        md:my-20 md:mx-20 
+        md:mt-20 md:mx-20 
         lg:mx-40 lg:mt-0 lg:flex-row">
         <Bodytext />
         {/* {() ? (true) : (false)} */}

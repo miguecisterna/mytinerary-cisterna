@@ -1,6 +1,6 @@
+import { RouterProvider } from 'react-router-dom'
 import { useState } from 'react'
-import './App.css'
-import Home from './pages/Home'
+import router from './router'
 
 
 
@@ -9,9 +9,8 @@ function App() {
 
   return (
     <>
-    
-      <div className="md:flex md:flex-col md:items-center bg-cover" style={{backgroundImage: `url(/img/fondo2.jpg)`}}>
-        <Home />
+      <div className="md:flex md:flex-col md:items-center md:justify-center gap-6 bg-cover h-[100vh] font-preahvihear font-bold" style={{backgroundImage: `url(/img/fondo2.jpg)`}}>
+        <RouterProvider router={router} />
       </div>
     </>
   )
