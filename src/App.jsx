@@ -9,6 +9,7 @@ function App() {
 
   return (
     <>
+    
       <div className="md:flex md:flex-col md:items-center bg-cover" style={{backgroundImage: `url(/img/fondo2.jpg)`}}>
         <Home />
       </div>
