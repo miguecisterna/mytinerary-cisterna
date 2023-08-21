@@ -1,13 +1,12 @@
 import React from 'react'
-import NavLayout from '../layouts/NavLayout'
+import CitiesBanner from '../components/CitiesBanner'
+import CitiesBodyLayout from '../layouts/CitiesBodyLayout'
 
 export default function Cities() {
   return (
     <div className="flex flex-col h-[100vh] w-[100vw]">
-      <NavLayout />
-      <div className="flex justify-center items-center h-[60vh]">
-        🚨🚧 Cities is Under Construction! 🚧🚨
-      </div>
+      <CitiesBanner />
+      <CitiesBodyLayout />
     </div>
     
   )
