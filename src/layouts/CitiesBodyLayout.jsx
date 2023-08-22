@@ -1,12 +1,16 @@
 import React from 'react'
 import SearchBar from '../components/Searchbar'
-import CitiesCards from '../components/CitiesCards'
+import CitiesCard from '../components/CitiesCard'
 
-export default function CitiesBodyLayout() {
+export default function CitiesBodyLayout({ data, fx, text }) {
   return (
     <div>
-      <SearchBar />
-      <CitiesCards />
+      <SearchBar citiesData={data} handle={fx} text={text}/>
+      <div className='flex flex-wrap gap-6 justify-center'>
+        {
+          data.map((each, index) => <CitiesCard key={index} photo={each.photo} name={each.city}/>)
+        }  
+      </div>
     </div>
   )
 }

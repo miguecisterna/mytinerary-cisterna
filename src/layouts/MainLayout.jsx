@@ -3,6 +3,7 @@ import Bodytext from "../components/BodyText";
 import Carousel from "../components/Carousel";
 import Slogan from "../components/Slogan";
 import axios from "axios";
+import apiUrl from "../apiUrl.js"
 
 
 export default function MainLayout() {
@@ -11,8 +12,9 @@ export default function MainLayout() {
 
   useEffect(
     ()=>{
-      axios("/data.json")
-        .then(res => setData(res.data))
+      axios(apiUrl+"cities/carousel")
+        //.then(res => console.log(res.data.data_carousel))
+        .then(res => setData(res.data.data_carousel))
         .catch(err => console.log(err))
     }, //callback que no debe retornar nada, y nO puede ser asincrona
     []      //array de dependencias (si está vacio se ejecuta una vez al montar el componente, en cambio, si tiene variables de dependencias, varía cada vez que cambia una de esas variables)
