@@ -21,12 +21,12 @@ export default function MainLayout() {
   )
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
         <Slogan />
-        <main className="flex flex-col y-10 gap-10 justify-between
-        sm:my-10 sm:flex-col items-center
+        <main className="flex flex-col gap-10 justify-between w-[90vw]
+        sm:my-10 sm:flex-col sm:items-center
         md:mt-20 md:mx-20 
-        lg:mx-40 lg:mt-0 lg:flex-row">
+        lg:px-20 lg:mx-0 lg:mt-0 lg:flex-row">
         <Bodytext />
         {/* {() ? (true) : (false)} */}
         <Carousel data={data}/>

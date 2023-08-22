@@ -8,7 +8,7 @@ export default function CitiesBodyLayout({ data, fx, text }) {
       <SearchBar citiesData={data} handle={fx} text={text}/>
       <div className='flex flex-wrap gap-6 justify-center'>
         {
-          data.map((each, index) => <CitiesCard key={index} photo={each.photo} name={each.city}/>)
+          data.map((each, index) => <CitiesCard key={index} photo={each.photo} name={each.city} id={each._id}/>)
         }  
       </div>
     </div>

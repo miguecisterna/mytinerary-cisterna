@@ -38,7 +38,8 @@ export default function Carousel({ data }) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-end pt-10">
+    <div className="flex flex-col items-center justify-end pt-10 mb-10
+    lg:mb-0">
       <h2 className="font-homemadeApple underline text-lg text-gray-700">Popular Mytineraries!</h2>
       <div className="carousel flex justify-center items-center h-80 pb-10 px-10 lg:px-0">
       <Arrow direction="M15.75 19.5L8.25 12l7.5-7.5" onClick={prev_slide}/>

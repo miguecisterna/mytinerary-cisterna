@@ -13,7 +13,7 @@ export default function Cities() {
 
   useEffect(
     ()=>{
-      axios(apiUrl + "cities?city=" + text)
+      axios(apiUrl + "cities?city=" + text.current.value)
       //.then(res=> console.log(res.data.response))      // En lugar de mostrarlo en consola lo seteo en una variable de estado para que se muestre en la vista
       .then(res=> {
         setCities(res.data.response)
@@ -23,14 +23,14 @@ export default function Cities() {
     },[reEffect]
   )
   function handleFilter(){
-    console.log(text.current);
+    console.log(text.current.value);
     setReEffect(!reEffect);
   }
 
   return (
     <div className="flex flex-col h-[100vh] w-[100vw]">
       <CitiesBanner />
-      <CitiesBodyLayout data={data} fx={handleFilter} text={text}/>
+      <CitiesBodyLayout data={data} fx={handleFilter} text={text} />
     </div>
     
   )

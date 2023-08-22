@@ -6,7 +6,7 @@ import Contact from '../components/Contact'
 
 export default function () {
   return (
-    <div className="flex w-[100%] justify-between h-[6.5vh]" style={{backgroundColor: 'rgba(40,40,40,0.5)'}}>
+    <div className="flex items-center justify-around w-[100vw] h-[20vh] xl:h-[6.5vh] xl:items-start" style={{backgroundColor: 'rgba(40,40,40,0.5)'}}>
       <Mininav />
       <Firma />
       <Contact/>
