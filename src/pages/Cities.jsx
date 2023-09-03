@@ -1,25 +1,21 @@
 import React, { useState,useEffect, useRef } from 'react'
 import CitiesBanner from '../components/CitiesBanner'
 import CitiesBodyLayout from '../layouts/CitiesBodyLayout'
-import axios from 'axios'
-import apiUrl from '../apiUrl'
-
+import { useSelector, useDispatch } from 'react-redux'
+import city_actions from '../store/actions/cities'
+const { read_cities } = city_actions
 
 export default function Cities() {
-  const [cities, setCities] = useState([]);
-  const [data, setData] = useState([]);
+  const cities = useSelector(store => store.cities.cities)
+  const data = useSelector(store => store.cities.cities)
   const [reEffect, setReEffect] = useState([true]);
   const text = useRef();
+  const dispatch = useDispatch();
+  console.log(cities);
 
   useEffect(
     ()=>{
-      axios(apiUrl + "cities?city=" + text.current.value)
-      //.then(res=> console.log(res.data.response))      // En lugar de mostrarlo en consola lo seteo en una variable de estado para que se muestre en la vista
-      .then(res=> {
-        setCities(res.data.response)
-        setData(res.data.response)
-      })  
-      .catch(err=> console.error(err))
+      dispatch(read_cities({ text:text.current?.value }));
     },[reEffect]
   )
   function handleFilter(){
