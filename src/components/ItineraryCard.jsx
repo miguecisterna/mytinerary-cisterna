@@ -1,12 +1,26 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { Link as Anchor } from 'react-router-dom'
+import apiUrl from '../apiUrl';
+import ActivitiesCard from './activitiesCard';
 
-
-
-export default function ItineraryCard({ userphoto, username, photo, name, price, duration, tags }) {
+export default function ItineraryCard({ userphoto, username, photo, name, price, duration, tags, id }) {
   const [show,setShow] = useState(false);
   const [like, setLike] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
+  const [activities, setActivities] = useState([]);
+
+  const handleActivities = async(id) =>{
+    let search = await axios.get(apiUrl + '/activities?itinerary_id=' + id)  
+      // Actualizar el estado con el nuevo valor
+      console.log(search.data.response)
+      setActivities(
+        search.data.response
+      );
+    };
+    // {activities.map((each)=>console.log(each + "Estas son las Activities😎😎"));}
+    console.log(activities)
+    console.log(id + " esta es la id😎😎")
 
   return (
     <div>
@@ -70,16 +84,28 @@ export default function ItineraryCard({ userphoto, username, photo, name, price,
           </div>
         </div>
         <div className='bg-[rgba(54,107,143,0.5)] rounded-lg'>
-          <Anchor onClick={()=>setShow(!show)} className="flex justify-end font-bold text-1xl font-preahvihear hover:text-white  p-4 rounded-lg" href="">
+          <span onClick={()=>{
+            setShow(!show);
+              handleActivities(id);
+            }} 
+            className="flex justify-end font-bold text-1xl font-preahvihear hover:text-white  p-4 rounded-lg" 
+            href="">
             {show ? ("⬆"): ("⬇")}
-          </Anchor>
+          </span>
           {show && 
             <div className='flex flex-col pb-6'>
-              <p>Activities & Coments</p>
-              <p>🚨🚧🚧Under Construction🚧🚧🚨</p>  
+            
+            {activities?.map(each => <ActivitiesCard title={each.name} photo={each.photo}/>)}
+                
+              
+              
             </div>}
         </div>
       </div>
     </div>
+
+    // <div onClick={handleActivities(id)}>
+    //   {activities?.map(each => <p>{each.name}</p>)}
+    // </div>
   )
 }

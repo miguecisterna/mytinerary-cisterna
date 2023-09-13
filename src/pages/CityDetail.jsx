@@ -35,7 +35,7 @@ export default function CityDetail () {
       />
       <div className='flex flex-col justify-end text-center w-[40vw]  rounded-lg gap-6 py-[5vh]'>
         <p className='text-[2rem]'>Itineraries:</p>
-        {itineraries.map((each, index) => 
+        {itineraries.map((each) => 
           <>
             <ItineraryCard 
               userphoto={each.userphoto}  
@@ -45,6 +45,7 @@ export default function CityDetail () {
               price={each.price}
               duration={each.duration}
               tags={each.tags}
+              id={each._id}
               />
           </>
         )}
